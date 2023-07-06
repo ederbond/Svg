@@ -1,0 +1,57 @@
+name: NuGet Publish
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  wpf:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '7.0.x'
+
+      - name: Restore nuget packages
+        run: dotnet restore Svg.WPF/Svg.Wpf.csproj
+
+      - name: Build project
+        run: dotnet build Svg.WPF/Svg.Wpf.csproj --configuration Release --no-restore
+
+      - name: Pack project
+        run: dotnet pack Svg.WPF/Svg.Wpf.csproj --configuration Release --no-build --output nupkg
+
+      - name: Publish to NuGet.org
+        run: dotnet nuget push **\*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+        
+
+  maui:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '7.0.x'
+          
+      - name: Install MAUI
+        run: dotnet workload install maui --source https://api.nuget.org/v3/index.json
+
+      - name: Restore nuget packages
+        run: dotnet restore Pro.Maui.Svg/Pro.Maui.Svg.csproj
+
+      - name: Build project
+        run: dotnet build Pro.Maui.Svg/Pro.Maui.Svg.csproj --configuration Release --no-restore
+
+      - name: Pack project
+        run: dotnet pack Pro.Maui.Svg/Pro.Maui.Svg.csproj --configuration Release --no-build --output nupkg
+
+      - name: Publish to NuGet.org
+        run: dotnet nuget push **\*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate

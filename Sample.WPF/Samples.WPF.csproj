@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Images\circle-plus-solid.svg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Images\circle-plus-solid.svg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Svg.WPF\Svg.Wpf.csproj" />
+  </ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="ReactiveProperty.WPF" Version="9.2.0" />
+		<PackageReference Include="SkiaSharp.Views.WPF" Version="2.88.3" />
+		<PackageReference Include="SkiaSharp.Svg" Version="1.60.0" />
+	</ItemGroup>
+
+</Project>

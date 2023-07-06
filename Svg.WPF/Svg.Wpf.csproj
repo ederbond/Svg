@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Authors>Eder Cardoso</Authors>
+    <Description>A lightweigth control based on SkiaSharp to render .svg images on WPF</Description>
+    <PackageProjectUrl>https://github.com/ederbond/Svg</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/ederbond/Svg</RepositoryUrl>
+    <PackageTags>svg;wpf;skia;vector;skiasharp</PackageTags>
+    <IncludeSymbols>True</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+  </PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="SkiaSharp.Views.WPF" Version="2.88.3" />
+		<PackageReference Include="SkiaSharp.Svg" Version="1.60.0" />
+	</ItemGroup>
+
+</Project>

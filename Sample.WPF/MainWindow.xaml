@@ -1,0 +1,38 @@
+﻿<Window x:Class="Samples.WPF.MainWindow"
+        d:DataContext="{d:DesignInstance {x:Type local1:MainWindowViewModel}}"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Samples.WPF" xmlns:wpf="clr-namespace:Svg.Wpf;assembly=Svg.Wpf"
+        xmlns:local1="clr-namespace:Samples.Wpf"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <StackPanel VerticalAlignment="Center"
+                HorizontalAlignment="Center">
+        <wpf:Svg Source="Images.circle-plus-solid.svg"
+                 ColorMapping="{Binding ColorMapping.Value}"
+             Height="100"
+             Width="100"/>
+
+        <StackPanel Orientation="Horizontal"
+                    Margin="40"
+                    Height="45">
+            <Button Content="Red" 
+                    Command="{Binding ChangeColorCommand}"
+                    CommandParameter="#DADADA = #FF0000"
+                    Width="50"
+                    Margin="10,0"/>
+            <Button Content="Green" 
+                    Command="{Binding ChangeColorCommand}"
+                    CommandParameter="#DADADA = #00FF00"
+                    Width="50"
+                    Margin="10,0"/>
+            <Button Content="Blue" 
+                    Command="{Binding ChangeColorCommand}"
+                    CommandParameter="#DADADA = #0000FF"
+                    Width="50"
+                    Margin="10,0"/>
+        </StackPanel>
+    </StackPanel>
+</Window>
